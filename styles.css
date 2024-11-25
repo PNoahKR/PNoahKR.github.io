@@ -21,3 +21,95 @@
 h3 {
     font-size: 2rem;
 }
+
+/* Career 섹션 스타일 */
+.career-section {
+    padding: 50px 0;
+}
+
+.career-timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: 50px; /* 왼쪽 여백 */
+}
+
+.career-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/* 왼쪽 라인 */
+.timeline-line {
+    width: 2px;
+    background-color: #000;
+    position: absolute;
+    left: -20px;
+    top: 0;
+    bottom: 0;
+}
+
+/* 동그라미 모양 */
+.timeline-circle {
+    width: 30px;
+    height: 30px;
+    background-color: #4CAF50; /* 동그라미 색상 */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: -38px;
+    top: 0;
+}
+
+/* 회사 아이콘 */
+.company-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+}
+
+/* 버블 박스 */
+.bubble-box {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-left: 50px; /* 동그라미 옆으로 여백 */
+    position: relative;
+    width: 300px;
+}
+
+/* 버블 박스 위치 조정 */
+.bubble-box::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent #f0f0f0;
+    transform: translateY(-50%);
+}
+
+/* 회사명 스타일 */
+.bubble-box h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* 날짜 스타일 */
+.dates {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 5px 0;
+}
+
+/* 설명 스타일 */
+.description {
+    font-size: 1rem;
+    color: #333;
+}
