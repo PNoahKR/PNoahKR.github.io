@@ -1,0 +1,23 @@
+/* 사이드바 크기 조정 */
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+/* 네비게이션 메뉴 활성화 시 스타일 */
+.nav-link.active {
+    font-weight: bold;
+    background-color: #495057;
+}
+
+/* 각 섹션 스타일 */
+.section {
+    padding: 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+h3 {
+    font-size: 2rem;
+}
