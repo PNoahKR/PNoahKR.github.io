@@ -9,15 +9,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="d-flex">
-    <!-- Sidebar -->
-    <div class="sidebar bg-dark text-white p-3" style="width: 250px;">
-        <div class="profile text-center mb-4">
-            <img src="profilePhoto.jpeg" alt="Profile Photo" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+
+<!-- 햄버거 메뉴 토글 버튼 -->
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<!-- 네비게이션 바 -->
+<nav id="sidebar" class="bg-light">
+    <div class="sidebar-content">
+        <!-- 프로필 및 네비게이션 링크 -->
+        <div class="profile-section">
+            <img src="profilePhoto.jpeg" alt="Profile Photo" class="img-fluid rounded-circle">
             <h2 class="mt-2">박지우</h2>
             <p class="text-muted">백엔드 개발자 박지우 입니다.</p>
         </div>
-        <nav class="nav flex-column">
+        <ul class="nav flex-column">
             <a href="#home" class="nav-link text-white">Home</a>
             <a href="#aboutMe" class="nav-link text-white">About Me</a>
             <a href="#skills" class="nav-link text-white">Skills</a>
@@ -27,82 +34,94 @@
             <a href="#education" class="nav-link text-white">Education</a>
             <a href="#blog" class="nav-link text-white">Blog</a>
             <a href="#contract" class="nav-link text-white">Contract</a>
-        </nav>
+        </ul>
     </div>
+</nav>
 
-    <!-- Main Content -->
-    <div class="content flex-grow-1 p-4" style="margin-left: 250px;">
-        <section id="home" class="section mb-5">
-            <h3>
-                안녕하세요. <br>
-                잘부탁드립니다.<br>
-                백엔드 개발자 박지우입니다.
-            </h3>
-            <p></p>
-        </section>
-        <section id="aboutMe" class="section mb-5">
-            <h4>About Me</h4>
-            <p>Details for section 2 go here...</p>
-        </section>
-        <section id="skills" class="section mb-5">
-            <h4>Skills</h4>
-            <p>Details for section 3 go here...</p>
-        </section>
-        <section id="projects" class="section mb-5">
-            <h4>Projects</h4>
-            <p>Details for section 1 go here...</p>
-        </section>
-        <section id="experience" class="section mb-5">
-            <h4>experience</h4>
-            <p>Details for section 2 go here...</p>
-        </section>
-        <section id="career" class="section mb-5">
-            <h4>career</h4>
-            <div class="career-timeline">
-                <!-- Career Item 1 -->
-                <div class="career-item">
-                    <div class="timeline-line"></div>
-                    <div class="timeline-circle">
-                        <img src="company.jpg" alt="Company" class="company-icon">
-                    </div>
-                    <div class="bubble-box">
-                        <h5>(주)퍼블리시</h5>
-                        <p class="dates">2021.09 - 2023.11</p>
-                        <p class="description">여기에 회사에서 일한 기간 동안의 내용을 작성합니다.</p>
-                    </div>
+<!-- 메인 컨텐츠 -->
+<div id="main-content" class="container">
+    <section id="home" class="section mb-5">
+        <h3>
+            안녕하세요. <br>
+            잘부탁드립니다.<br>
+            백엔드 개발자 박지우입니다.
+        </h3>
+        <p></p>
+    </section>
+    <section id="aboutMe" class="section mb-5">
+        <h4>About Me</h4>
+        <p>Details for section 2 go here...</p>
+    </section>
+    <section id="skills" class="section mb-5">
+        <h4>Skills</h4>
+        <p>Details for section 3 go here...</p>
+    </section>
+    <section id="projects" class="section mb-5">
+        <h4>Projects</h4>
+        <p>Details for section 1 go here...</p>
+    </section>
+    <section id="experience" class="section mb-5">
+        <h4>experience</h4>
+        <p>Details for section 2 go here...</p>
+    </section>
+    <section id="career" class="section mb-5">
+        <h4>career</h4>
+        <div class="career-timeline">
+            <!-- Career Item 1 -->
+            <div class="career-item">
+                <div class="timeline-line"></div>
+                <div class="timeline-circle">
+                    <img src="company.jpg" alt="Company" class="company-icon">
                 </div>
-                <!-- Career Item 2 -->
-                <div class="career-item">
-                    <div class="timeline-line"></div>
-                    <div class="timeline-circle">
-                        <img src="company.jpg" alt="Company" class="company-icon">
-                    </div>
-                    <div class="bubble-box">
-                        <h4>회사명 B</h4>
-                        <p class="dates">2023.01 - 현재</p>
-                        <p class="description">현재 다니고 있는 회사의 업무 내용이나 프로젝트 등을 설명합니다.</p>
-                    </div>
+                <div class="bubble-box">
+                    <h5>(주)퍼블리시</h5>
+                    <p class="dates">2021.09 - 2023.11</p>
+                    <p class="description">여기에 회사에서 일한 기간 동안의 내용을 작성합니다.</p>
                 </div>
             </div>
-        </section>
-        <section id="education" class="section mb-5">
-            <h4>education</h4>
-            <p>Details for section 1 go here...</p>
-        </section>
-        <section id="blog" class="section mb-5">
-            <h4>blog</h4>
-            <p>Details for section 2 go here...</p>
-        </section>
-        <section id="contract" class="section mb-5">
-            <h4>contract</h4>
-            <p>Details for section 3 go here...</p>
-        </section>
-    </div>
+            <!-- Career Item 2 -->
+            <div class="career-item">
+                <div class="timeline-line"></div>
+                <div class="timeline-circle">
+                    <img src="company.jpg" alt="Company" class="company-icon">
+                </div>
+                <div class="bubble-box">
+                    <h4>회사명 B</h4>
+                    <p class="dates">2023.01 - 현재</p>
+                    <p class="description">현재 다니고 있는 회사의 업무 내용이나 프로젝트 등을 설명합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="education" class="section mb-5">
+        <h4>education</h4>
+        <p>Details for section 1 go here...</p>
+    </section>
+    <section id="blog" class="section mb-5">
+        <h4>blog</h4>
+        <p>Details for section 2 go here...</p>
+    </section>
+    <section id="contract" class="section mb-5">
+        <h4>contract</h4>
+        <p>Details for section 3 go here...</p>
+    </section>
 </div>
 
 <!-- Bootstrap JS 및 Popper.js 추가 -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.querySelector('.navbar-toggler');
+
+    toggleButton.addEventListener('click', () => {
+        sidebar.classList.toggle('active'); // 버튼 클릭 시 사이드바 열고 닫기
+    });
+</script>
+
 </body>
 </html>

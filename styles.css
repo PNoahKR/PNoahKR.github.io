@@ -1,15 +1,82 @@
-/* 사이드바 크기 조정 */
-.sidebar {
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* 네비게이션 메뉴 활성화 시 스타일 */
-.nav-link.active {
-    font-weight: bold;
-    background-color: #495057;
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #343a40;
+    color: white;
+    transition: transform 0.3s ease;
+    transform: translateX(-250px); /* 초기에는 숨김 상태 */
+    z-index: 1000;
+}
+
+#sidebar.active {
+    transform: translateX(0); /* 'active' 클래스가 있으면 보임 */
+}
+
+/* 사이드바 내용 */
+.sidebar-content {
+    padding: 20px;
+}
+
+/* 프로필 이미지 및 텍스트 스타일 */
+.profile-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.name {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+.intro {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* 네비게이션 링크 스타일 */
+.nav-item {
+    margin-bottom: 15px;
+}
+
+.nav-link {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+/* 모바일에서 햄버거 메뉴 버튼을 활성화 */
+@media (max-width: 768px) {
+    #sidebar {
+        transform: translateX(-250px); /* 모바일에서는 기본적으로 숨김 */
+    }
+
+    .navbar-toggler {
+        display: block; /* 햄버거 메뉴 표시 */
+    }
+
+    #sidebar.active {
+        transform: translateX(0); /* 'active' 클래스가 있으면 사이드바가 표시됨 */
+    }
 }
 
 /* 각 섹션 스타일 */
@@ -41,34 +108,35 @@ h3 {
     margin-bottom: 50px;
 }
 
-/* 왼쪽 라인 */
+/* 왼쪽 라인 (연결된 스타일) */
 .timeline-line {
-    width: 2px;
-    background-color: #000;
+    width: 4px; /* 라인의 두께를 더 두껍게 */
+    background-color: #4CAF50; /* 라인 색상 */
     position: absolute;
     left: -20px;
     top: 0;
     bottom: 0;
+    z-index: -1; /* 동그라미가 라인 위에 오도록 설정 */
 }
 
 /* 동그라미 모양 */
 .timeline-circle {
-    width: 30px;
-    height: 30px;
-    background-color: #4CAF50; /* 동그라미 색상 */
+    width: 40px; /* 크기를 조정 */
+    height: 40px;
+    background-color: #ffffff; /* 동그라미 배경 */
+    border: 4px solid #4CAF50; /* 동그라미 테두리 */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    left: -38px;
-    top: 0;
+    position: relative;
+    z-index: 1;
 }
 
 /* 회사 아이콘 */
 .company-icon {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     object-fit: cover;
 }
 
@@ -77,12 +145,12 @@ h3 {
     background-color: #f0f0f0;
     border-radius: 10px;
     padding: 15px;
-    margin-left: 50px; /* 동그라미 옆으로 여백 */
+    margin-left: 60px; /* 동그라미 옆으로 여백 */
     position: relative;
     width: 300px;
 }
 
-/* 버블 박스 위치 조정 */
+/* 버블 박스의 꼬리 부분 */
 .bubble-box::after {
     content: '';
     position: absolute;
