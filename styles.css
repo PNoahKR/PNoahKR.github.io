@@ -20,7 +20,7 @@ body {
     padding: 15px;
     z-index: 1000;
     transition: transform 0.3s ease;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
 #sidebar .sidebar-content {
@@ -70,12 +70,52 @@ body {
 #main-content {
     flex-grow: 1;
     margin-left: 250px;
-    padding: 20px;
+    padding: 0;
     transition: margin-left 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 #main-content section {
-    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* 각 섹션이 화면에 꽉 차도록 설정 */
+    padding: 20px;
+    text-align: center;
+}
+
+/* 섹션 배경색 (선택 사항) */
+#home {
+    background-color: #f8f9fa;
+}
+#aboutMe {
+    background-color: #e9ecef;
+}
+#skills {
+    background-color: #dee2e6;
+}
+#projects {
+    background-color: #ced4da;
+}
+#experience {
+    background-color: #adb5bd;
+}
+#career {
+    background-color: #6c757d;
+    color: white;
+}
+#education {
+    background-color: #495057;
+    color: white;
+}
+#blog {
+    background-color: #343a40;
+    color: white;
+}
+#contact {
+    background-color: #212529;
+    color: white;
 }
 
 /* 연혁 섹션 */
@@ -171,6 +211,6 @@ body {
 
     .navbar-toggler {
         display: block;
-        z-index: 1101; /* 사이드바 위로 */
+        z-index: 1101;
     }
 }
