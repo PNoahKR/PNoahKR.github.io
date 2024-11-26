@@ -4,8 +4,8 @@ body {
     padding: 0;
     display: flex;
     height: 100vh;
-    overflow-x: hidden;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 /* 네비게이션 바 */
@@ -18,12 +18,9 @@ body {
     background-color: #343a40;
     color: white;
     padding: 15px;
-    transition: transform 0.3s ease;
     z-index: 1000;
-}
-
-#sidebar.active {
-    transform: translateX(0);
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
 }
 
 #sidebar .sidebar-content {
@@ -124,7 +121,7 @@ body {
     max-width: 400px;
 }
 
-/* 모바일 스타일 */
+/* 모바일 전용 */
 .navbar-toggler {
     display: none;
     position: fixed;
@@ -152,5 +149,6 @@ body {
 
     .navbar-toggler {
         display: block;
+        z-index: 1101; /* 사이드바 위로 */
     }
 }
