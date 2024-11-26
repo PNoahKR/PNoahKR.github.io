@@ -1,10 +1,14 @@
 /* 기본 스타일 */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    height: 100vh;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
 }
 
+/* 네비게이션 바 */
 #sidebar {
     position: fixed;
     top: 0;
@@ -13,171 +17,140 @@ body {
     height: 100%;
     background-color: #343a40;
     color: white;
+    padding: 15px;
     transition: transform 0.3s ease;
-    transform: translateX(-250px); /* 초기에는 숨김 상태 */
     z-index: 1000;
 }
 
 #sidebar.active {
-    transform: translateX(0); /* 'active' 클래스가 있으면 보임 */
+    transform: translateX(0);
 }
 
-/* 사이드바 내용 */
-.sidebar-content {
-    padding: 20px;
+#sidebar .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* 프로필 이미지 및 텍스트 스타일 */
+/* 프로필 섹션 */
 .profile-section {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .profile-pic {
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    margin-bottom: 10px;
 }
 
 .name {
-    margin-top: 10px;
-    font-size: 1.5rem;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .intro {
-    font-size: 1rem;
+    font-size: 14px;
     color: #ccc;
 }
 
-/* 네비게이션 링크 스타일 */
-.nav-item {
-    margin-bottom: 15px;
-}
-
+/* 네비게이션 링크 */
 .nav-link {
-    color: #ccc;
+    color: #ddd;
+    font-size: 16px;
+    padding: 10px 0;
     text-decoration: none;
-    font-size: 1.1rem;
+    display: block;
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-link.active {
     color: white;
+    font-weight: bold;
 }
 
-/* 모바일에서 햄버거 메뉴 버튼을 활성화 */
-@media (max-width: 768px) {
-    #sidebar {
-        transform: translateX(-250px); /* 모바일에서는 기본적으로 숨김 */
-    }
-
-    .navbar-toggler {
-        display: block; /* 햄버거 메뉴 표시 */
-    }
-
-    #sidebar.active {
-        transform: translateX(0); /* 'active' 클래스가 있으면 사이드바가 표시됨 */
-    }
+/* 메인 컨텐츠 */
+#main-content {
+    flex-grow: 1;
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
 }
 
-/* 각 섹션 스타일 */
-.section {
-    padding: 50px;
-    border-bottom: 1px solid #ddd;
+#main-content section {
+    padding: 20px 0;
 }
 
-h3 {
-    font-size: 2rem;
-}
-
-/* Career 섹션 스타일 */
-.career-section {
-    padding: 50px 0;
-}
-
+/* 연혁 섹션 */
 .career-timeline {
-    display: flex;
-    flex-direction: column;
+    margin-left: 50px;
     position: relative;
-    margin-left: 50px; /* 왼쪽 여백 */
+}
+
+.career-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #007bff;
 }
 
 .career-item {
     display: flex;
     align-items: center;
-    position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
-/* 왼쪽 라인 (연결된 스타일) */
-.timeline-line {
-    width: 4px; /* 라인의 두께를 더 두껍게 */
-    background-color: #4CAF50; /* 라인 색상 */
-    position: absolute;
-    left: -20px;
-    top: 0;
-    bottom: 0;
-    z-index: -1; /* 동그라미가 라인 위에 오도록 설정 */
-}
-
-/* 동그라미 모양 */
-.timeline-circle {
-    width: 40px; /* 크기를 조정 */
+.career-item .circle {
+    width: 40px;
     height: 40px;
-    background-color: #ffffff; /* 동그라미 배경 */
-    border: 4px solid #4CAF50; /* 동그라미 테두리 */
     border-radius: 50%;
+    background-color: #007bff;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 1;
+    color: white;
+    font-size: 20px;
+    margin-right: 20px;
 }
 
-/* 회사 아이콘 */
-.company-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: cover;
-}
-
-/* 버블 박스 */
-.bubble-box {
-    background-color: #f0f0f0;
+.career-item .bubble {
+    background-color: #f8f9fa;
+    padding: 10px;
     border-radius: 10px;
-    padding: 15px;
-    margin-left: 60px; /* 동그라미 옆으로 여백 */
-    position: relative;
-    width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
 }
 
-/* 버블 박스의 꼬리 부분 */
-.bubble-box::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -15px;
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent transparent transparent #f0f0f0;
-    transform: translateY(-50%);
+/* 모바일 스타일 */
+.navbar-toggler {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #343a40;
+    border: none;
+    color: white;
+    font-size: 24px;
+    z-index: 1100;
 }
 
-/* 회사명 스타일 */
-.bubble-box h4 {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
+@media (max-width: 768px) {
+    #sidebar {
+        transform: translateX(-250px);
+    }
 
-/* 날짜 스타일 */
-.dates {
-    font-size: 0.9rem;
-    color: #777;
-    margin: 5px 0;
-}
+    #sidebar.active {
+        transform: translateX(0);
+    }
 
-/* 설명 스타일 */
-.description {
-    font-size: 1rem;
-    color: #333;
+    #main-content {
+        margin-left: 0;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
 }

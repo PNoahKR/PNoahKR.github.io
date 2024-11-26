@@ -1,35 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const menuItems = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.section');
+// 네비게이션 바 및 버튼 요소 선택
+const sidebar = document.getElementById('sidebar');
+const toggleButton = document.querySelector('.navbar-toggler');
 
-    // 스크롤 이벤트 리스너
-    window.addEventListener('scroll', () => {
-        let currentSection = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100; // 오프셋 조정
-            if (window.scrollY >= sectionTop) {
-                currentSection = section.getAttribute('id');
-            }
-        });
+// 네비게이션 토글 동작
+toggleButton.addEventListener('click', () => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        sidebar.classList.toggle('active');
+        toggleBodyScroll(sidebar.classList.contains('active'));
+    }
+});
 
-        menuItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === `#${currentSection}`) {
-                item.classList.add('active');
-            }
-        });
-    });
+// 스크롤 방지 함수
+function toggleBodyScroll(isSidebarActive) {
+    if (isSidebarActive) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+}
 
-    // 메뉴 클릭 시 스무스 스크롤
-    menuItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = item.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            window.scrollTo({
-                top: targetSection.offsetTop,
-                behavior: 'smooth'
-            });
-        });
-    });
+// 윈도우 크기 변경 이벤트: 사이드바 상태 초기화
+window.addEventListener('resize', () => {
+    const isMobile = window.innerWidth <= 768;
+
+    if (!isMobile) {
+        sidebar.classList.add('active');
+        document.body.style.overflow = '';
+    } else {
+        sidebar.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 });
