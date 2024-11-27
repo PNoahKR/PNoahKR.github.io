@@ -78,6 +78,7 @@ section {
     height: 100vh; /* 섹션 높이를 화면에 맞춤 */
     margin: 0; /* 여백 제거 */
     display: flex;
+    flex-direction: column;
     align-items: flex-start; /* 제목을 상단 정렬 */
     justify-content: flex-start; /* 제목을 왼쪽 정렬 */
     background-color: #f8f9fa; /* 기본 배경색 */
@@ -90,11 +91,12 @@ section {
     font-weight: 700;
     margin: 0;
     color: rgba(0, 0, 0, 0.37);
-    position: sticky; /* 고정 위치 설정 */
+    position: static; /* 고정 위치 설정 */
     top: 0; /* 상단에 고정 */
     padding: 10px 1%;
     z-index: 100; /* 다른 내용과 겹치지 않도록 */
     white-space: nowrap;
+    box-sizing: border-box;
 }
 
 /* 섹션 배경색 (선택 사항) */
@@ -142,6 +144,7 @@ section {
     text-align: left; /* 텍스트 왼쪽 정렬 */
     position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
     top: -50px; /* 높이를 조정해 제목과 자연스럽게 연결 */
+    box-sizing: border-box;
 }
 
 /* 소제목 스타일 */
@@ -162,12 +165,47 @@ section {
     color: #333;
     margin-top: 0; /* 소제목과 본문 간격을 margin-bottom을 통해 조정 */
     padding-left: 0; /* 본문 왼쪽 여백 제거 */
+    padding-right: 0;
     margin-left: 0; /* 왼쪽 정렬 */
     text-align: left; /* 왼쪽 정렬 */
 }
 
 .bold-text {
     font-weight: 900; /* 볼드체 스타일 */
+}
+
+/* 그리드 컨테이너 스타일 - 가로 한 줄 정렬 */
+.grid-container {
+    display: flex;
+    gap: 7%; /* 상자 간 간격 */
+    overflow-x: auto; /* 가로 스크롤 허용 */
+    padding: 50px 0; /* 상하 여백 추가 */
+    scroll-behavior: smooth; /* 부드러운 스크롤 */
+    justify-content: center; /* 그리드 아이템을 화면 가로 가운데로 정렬 */
+    width: 100%; /* 화면 너비에 맞게 확장 */
+}
+
+/* 가로 스크롤 시 상자 정렬 유지 */
+.grid-item {
+    flex: 0 0 auto; /* 가로 크기를 고정 */
+    width: 150px; /* 각 상자의 너비 */
+    height: 150px; /* 각 상자의 높이 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #000000;
+    font-weight: bold;
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+/* 아이콘 스타일 */
+.icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 #skills {
