@@ -57,3 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // 페이지 로드 시 바로 한 번 처리하여 초기 상태 설정
     handleScroll();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const messages = document.querySelectorAll(".welcome-message");
+    messages.forEach((message, index) => {
+        setTimeout(() => {
+            message.style.opacity = 1;
+        }, index * 1000); // 1초 간격으로 문구 표시
+    });
+});
