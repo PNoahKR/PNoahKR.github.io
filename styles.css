@@ -284,7 +284,7 @@ section {
 }
 
 .project-box {
-    font-family: 'Gowun Dodum', serif;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
     position: relative;
     width: calc(50% - 10px); /* 한 줄에 2개의 박스 */
     height: 300px; /* 높이를 키움 */
@@ -314,7 +314,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* 배경에 블러 처리 */
+    background: rgba(0, 0, 0, 0.73); /* 배경에 블러 처리 */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* 요소들이 위에서 아래로 정렬되게 설정 */
@@ -363,7 +363,7 @@ section {
 }
 
 .project-link:hover {
-    background-color: #343a40;
+    background-color: #3498db;
 }
 
 #experience-container {
@@ -518,6 +518,21 @@ section {
     margin-top: 10px;
 }
 
+.job-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.job-description ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.job-description li {
+    margin-bottom: 5px;
+}
+
 #education-container {
     display: flex;
     flex-direction: column;
@@ -602,7 +617,7 @@ section {
 }
 
 .blog-box {
-    font-family: 'Gowun Dodum', serif;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
     position: relative;
     width: calc(50% - 10px); /* 한 줄에 2개의 박스 */
     height: 300px; /* 높이를 키움 */
@@ -632,7 +647,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* 배경에 블러 처리 */
+    background: rgba(0, 0, 0, 0.73); /* 배경에 블러 처리 */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* 요소들이 위에서 아래로 정렬되게 설정 */
@@ -681,7 +696,7 @@ section {
 }
 
 .blog-link:hover {
-    background-color: #343a40;
+    background-color: #3498db;
 }
 
 #contact-container {
