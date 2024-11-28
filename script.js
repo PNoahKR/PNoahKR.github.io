@@ -66,3 +66,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }, index * 1000); // 1초 간격으로 문구 표시
     });
 });
+
+function toggleDetails(button) {
+    const details = button.nextElementSibling; // 버튼의 다음 요소 (details)
+
+    if (details.style.height && details.style.height !== "0px") {
+        // 아이템 박스 닫기
+        details.style.height = "0px";
+        details.style.opacity = "0"; // 투명도 변경
+        setTimeout(() => {
+            details.style.display = "none"; // 애니메이션 후 display:none 처리
+        }, 300); // transition 시간과 동일하게 설정
+    } else {
+        // 아이템 박스 열기
+        details.style.display = "flex"; // flex로 표시
+        const fullHeight = details.scrollHeight + "px"; // 내용의 전체 높이 계산
+        details.style.height = "0px"; // 높이를 0으로 설정한 뒤
+        details.style.opacity = "0";
+        setTimeout(() => {
+            details.style.height = fullHeight; // 실제 높이로 변경
+            details.style.opacity = "1"; // 투명도 변경
+        }, 10); // display:flex 적용 후에 실행되도록 약간의 지연
+    }
+}

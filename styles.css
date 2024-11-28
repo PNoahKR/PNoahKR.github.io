@@ -171,7 +171,13 @@ section {
 }
 
 .bold-text {
-    font-weight: 900; /* 볼드체 스타일 */
+    font-weight: bold; /* 기본 볼드체 */
+    text-shadow:
+            0.1px 0.1px 0px #000, /* 오른쪽 아래 */
+            -0.1px 0.1px 0px #000, /* 왼쪽 아래 */
+            0.1px -0.1px 0px #000, /* 오른쪽 위 */
+            -0.1px -0.1px 0px #000; /* 왼쪽 위 */
+    color: black; /* 텍스트 색상 */
 }
 
 /* 그리드 컨테이너 스타일 - 가로 한 줄 정렬 */
@@ -372,15 +378,16 @@ section {
 
 #career-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;  /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between;  /* 아이템 간격을 일정하게 */
     align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    justify-content: center; /* 세로 중앙 정렬 */
-    height: calc(100vh - 100px); /* 제목 제외한 화면 중앙 배치 */
+    width: 100%;  /* 좌우로 100% 차지 */
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
     text-align: left; /* 텍스트 왼쪽 정렬 */
     position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
-    top: -50px; /* 높이를 조정해 제목과 자연스럽게 연결 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
 }
 
 .career-item {
@@ -434,14 +441,64 @@ section {
 #education-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    justify-content: center; /* 세로 중앙 정렬 */
-    height: calc(100vh - 100px); /* 제목 제외한 화면 중앙 배치 */
+    justify-content: center;  /* 아이템 간격을 일정하게 */
+    align-items: center; /* 텍스트 왼쪽 정렬 */
+    width: 100%;  /* 좌우로 100% 차지 */
+    height: calc(100vh - 100px);
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
     text-align: left; /* 텍스트 왼쪽 정렬 */
     position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
-    top: -50px; /* 높이를 조정해 제목과 자연스럽게 연결 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
+}
+
+.education-item {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 80%; /* 컨테이너 전체 너비 차지 */
+    margin-bottom: 20px;
+}
+
+.education-title {
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+    width: 100%; /* 버튼 너비를 전체로 설정 */
+    padding: 10px 0;
+    transition: color 0.3s;
+}
+
+.education-title:hover {
+    color: #667aff;
+}
+
+.education-details {
+    display: none;
+    height: 0; /* 초기 높이를 0으로 설정 */
+    overflow: hidden; /* 내용 넘침 방지 */
+    transition: height 0.3s ease, opacity 0.3s ease; /* 높이와 투명도 변화를 부드럽게 처리 */
+    color: #000000;
+    margin-top: 10px;
+    font-family: 'Gowun Dodum', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: left;
+    gap: 15px;
+    opacity: 0; /* 초기 투명도 설정 */
+}
+
+.education-details p {
+    margin: 0; /* 기본 여백 제거 */
+    flex: 1; /* 각 요소가 동일한 비율로 공간을 차지 */
+    min-width: 150px; /* 항목 최소 너비 지정 */
 }
 
 #blog {
@@ -451,33 +508,157 @@ section {
 
 #blog-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;  /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between;  /* 아이템 간격을 일정하게 */
     align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    justify-content: center; /* 세로 중앙 정렬 */
-    height: calc(100vh - 100px); /* 제목 제외한 화면 중앙 배치 */
+    width: 100%;  /* 좌우로 100% 차지 */
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
     text-align: left; /* 텍스트 왼쪽 정렬 */
     position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
-    top: -50px; /* 높이를 조정해 제목과 자연스럽게 연결 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
+}
+
+.blog-box {
+    font-family: 'Gowun Dodum', serif;
+    position: relative;
+    width: calc(50% - 10px); /* 한 줄에 2개의 박스 */
+    height: 300px; /* 높이를 키움 */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    border-radius: 0px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 20px; /* 아래 간격 */
+    box-sizing: border-box; /* padding을 포함한 크기 계산 */
+}
+
+.blog-box:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* 마우스 오버 시 배경이 어두워짐 */
+}
+
+.blog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 영역을 채우도록 */
+}
+
+.blog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* 배경에 블러 처리 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 요소들이 위에서 아래로 정렬되게 설정 */
+    padding: 20px; /* 내용물과 경계 간 간격을 주기 위해 padding 추가 */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.blog-box:hover .blog-overlay {
+    opacity: 1; /* 마우스 오버 시 텍스트와 버튼이 보이게 */
+}
+
+.blog-title {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left; /* 왼쪽 정렬 */
+    margin-top: 10px; /* 제목 위에 여백 추가 */
+}
+
+.blog-description {
+    color: white;
+    font-size: 15px;
+    margin-bottom: 20px;
+    text-align: left; /* 왼쪽 정렬 */
+}
+
+.blog-links {
+    display: flex; /* 링크들을 가로로 배치 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    gap: 10px; /* 링크들 간의 간격 */
+}
+
+.blog-link {
+    padding: 8px 8px;
+    background-color: rgba(222, 226, 230, 0.73);
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 링크 위에 간격 추가 */
+    align-self: flex-start; /* 왼쪽 아래 정렬 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.blog-link:hover {
+    background-color: #343a40;
 }
 
 #contact {
     background-color: rgba(33, 37, 41, 0.72);
-    color: white;
+    color: #000000;
 }
 
 #contact-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+    align-items: center; /* 중앙 정렬 */
     justify-content: center; /* 세로 중앙 정렬 */
     height: calc(100vh - 100px); /* 제목 제외한 화면 중앙 배치 */
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
     text-align: left; /* 텍스트 왼쪽 정렬 */
-    position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
+    position: relative;
     top: -50px; /* 높이를 조정해 제목과 자연스럽게 연결 */
+}
+
+.contact-item {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contact-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: scale(1.05); /* 마우스 오버 시 크기 확대 */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.contact-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* 모바일 전용 */
