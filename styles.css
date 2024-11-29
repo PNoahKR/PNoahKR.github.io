@@ -179,32 +179,25 @@ section {
     color: black; /* 텍스트 색상 */
 }
 
-/* 그리드 컨테이너 스타일 - 가로 한 줄 정렬 */
+/* 기본 그리드 설정 */
 .grid-container {
-    display: flex;
-    gap: 7%; /* 상자 간 간격 */
-    overflow-x: auto; /* 가로 스크롤 허용 */
-    padding: 50px 0; /* 상하 여백 추가 */
-    scroll-behavior: smooth; /* 부드러운 스크롤 */
-    justify-content: center; /* 그리드 아이템을 화면 가로 가운데로 정렬 */
-    width: 100%; /* 화면 너비에 맞게 확장 */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 자동으로 열 배치 */
+    gap: 15px;
+    max-width: 1200px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 10px;
+    width: 100%; /* 화면 너비에 맞추기 */
+    box-sizing: border-box;
 }
 
-/* 가로 스크롤 시 상자 정렬 유지 */
+/* 그리드 아이템 */
 .grid-item {
-    flex: 0 0 auto; /* 가로 크기를 고정 */
-    width: 150px; /* 각 상자의 너비 */
-    height: 150px; /* 각 상자의 높이 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-align: center;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #000000;
-    font-weight: bold;
-    text-align: center; /* 텍스트 가운데 정렬 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* 아이콘 스타일 */
@@ -397,6 +390,11 @@ section {
     flex-direction: column; /* 세로 방향으로 정렬 */
     align-items: center; /* 가로축 가운데 정렬 */
     justify-content: center; /* 세로축 가운데 정렬 */
+    transition: transform 0.3s; /* 호버 시 애니메이션 */
+}
+
+.experience-card:hover {
+    transform: translateY(-5px); /* 호버 효과 */
 }
 
 .icon-container {
@@ -725,6 +723,7 @@ section {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* 텍스트가 상자를 벗어나지 않도록 함 */
 }
 
 .contact-card:hover {
@@ -762,7 +761,8 @@ section {
     background-color: transparent;
     border: none;
     color: #343a40;
-    font-size: 24px;
+    font-size: 30px;
+    padding: 15px;   /* 패딩 키움 */
     z-index: 1100;
 }
 
@@ -788,12 +788,14 @@ section {
     display: none;
 }
 
+/* 반응형 미디어 쿼리 */
 @media (max-width: 768px) {
     #sidebar {
-        transform: translateX(-250px);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
     }
 
-    #sidebar.active {
+    #sidebar.open {
         transform: translateX(0);
     }
 
@@ -801,8 +803,152 @@ section {
         margin-left: 0;
     }
 
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+    }
+
+    .name {
+        font-size: 18px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
     .navbar-toggler {
-        display: block;
-        z-index: 1101;
+        font-size: 32px; /* 모바일에서 글자 크기 키움 */
+        padding: 20px;   /* 패딩을 더 키움 */
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    #home-container {
+        padding-left: 10%;
+    }
+
+    #contact-container {
+        flex-direction: column; /* 세로로 정렬 */
+        align-items: center; /* 중앙 정렬 */
+        padding-left: 0; /* 왼쪽 여백 제거 */
+        padding-right: 0; /* 오른쪽 여백 제거 */
+    }
+
+    .contact-item {
+        width: 100%; /* 각 항목이 100% 너비로 차지 */
+        margin-bottom: 20px; /* 각 항목 간의 간격 */
+    }
+}
+
+@media (max-width: 576px) {
+
+    #main-content {
+        margin-left: 0;
+    }
+
+    .profile-pic {
+        width: 60px;
+        height: 60px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .nav-link {
+        font-size: 12px;
+    }
+
+    .section-title {
+        font-size: 1rem;
+    }
+
+    #home-container {
+        padding-left: 5%;
+    }
+}
+
+/* 그리드 반응형 */
+@media (max-width: 768px) {
+    .welcome-message {
+        font-size: 1.8rem; /* 모바일에서 폰트 크기를 줄여줌 */
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2열로 정렬 */
+        gap: 10px;
+    }
+
+    .grid-item {
+        padding: 15px;
+    }
+
+    #experience-container {
+        flex-direction: column; /* 세로 정렬 */
+        align-items: center;
+        gap: 25px;
+    }
+
+    .experience-card {
+        width: 90%; /* 화면의 90% 너비 */
+    }
+
+    .sub-title {
+        font-size: 1.2rem; /* 폰트 크기 조정 */
+    }
+
+    .experience-content h2 {
+        font-size: 1.3rem; /* 제목 폰트 크기 조정 */
+    }
+
+    .experience-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .experience-content p {
+        font-size: 0.9rem;
+    }
+
+    .skill-category {
+        flex: 1 1 calc(45% - 10px);
+        max-width: calc(45% - 10px);
+    }
+
+    .project-box {
+        width: calc(100% - 10px);
+        height: 250px;
+    }
+
+    .blog-box {
+        width: calc(100% - 10px);
+        height: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* 1열로 정렬 */
+        gap: 10px;
+    }
+
+    .grid-item {
+        padding: 10px;
+    }
+
+    .skill-category {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .project-box {
+        width: 100%;
+        height: 200px;
+    }
+
+    .blog-box {
+        width: 100%;
+        height: 200px;
     }
 }
