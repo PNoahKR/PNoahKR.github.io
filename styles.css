@@ -67,6 +67,17 @@ body {
     top: 20px;
     left: 20px;
     z-index: 1000;
+    color: black;
+}
+
+/* 토글 버튼 숨기기 */
+.navbar-toggler.hidden {
+    display: none;
+}
+
+/* 사이드바가 열렸을 때 토글 버튼 색상 변경 */
+#sidebar.active + .navbar-toggler {
+    color: white; /* 사이드바가 열렸을 때 토글 버튼의 글자 색을 흰색으로 설정 */
 }
 
 /* 프로필 섹션 */
@@ -625,7 +636,6 @@ section {
 .education-details p {
     margin: 0; /* 기본 여백 제거 */
     flex: 1; /* 각 요소가 동일한 비율로 공간을 차지 */
-    min-width: 150px; /* 항목 최소 너비 지정 */
 }
 
 #blog-container {
@@ -867,5 +877,23 @@ section {
     .blog-box {
         width: calc(100% - 10px);
         height: 250px;
+    }
+
+    .education-details {
+        display: flex; /* flexbox 사용 */
+        flex-direction: column; /* 자식 요소들을 세로로 배치 */
+        align-items: flex-start; /* 자식 요소들을 왼쪽 정렬 */
+    }
+
+    #contact-container {
+        flex-direction: column;  /* 모바일에서 세로로 배치 */
+        align-items: center;  /* 세로 배치 시 중앙 정렬 */
+        padding-left: 0; /* 모바일에서는 왼쪽 여백 제거 */
+        padding-right: 0; /* 모바일에서는 오른쪽 여백 제거 */
+    }
+
+    .contact-item {
+        width: 100%; /* 모바일에서는 각 항목이 100% 차지 */
+        margin-bottom: 20px; /* 항목 간 간격 유지 */
     }
 }
