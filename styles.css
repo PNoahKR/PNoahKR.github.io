@@ -8,25 +8,65 @@ body {
     overflow-x: hidden;
 }
 
-/* 네비게이션 바 */
+/* 사이드바 스타일 */
 #sidebar {
-    position: fixed;
+    position: fixed; /* 고정된 위치로 설정 */
     top: 0;
     left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #343a40;
+    width: 250px; /* 사이드바 너비 */
+    height: 100vh; /* 화면 높이와 동일 */
+    background-color: #333;
     color: white;
-    padding: 15px;
-    z-index: 1000;
-    transition: transform 0.3s ease;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-}
-
-#sidebar .sidebar-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 20px;
+    z-index: 1000; /* 다른 콘텐츠보다 위에 표시 */
+    transform: translateX(0); /* 사이드바가 기본적으로 보이도록 설정 */
+}
+
+/* 사이드바 섹션 스타일 */
+#sidebar ul {
+    list-style-type: none; /* 기본 리스트 점 제거 */
+    padding: 0; /* 여백 제거 */
+}
+
+#sidebar li {
+    margin: 10px 0; /* 섹션 항목 간의 간격 */
+}
+
+#sidebar li a {
+    color: #fff; /* 기본 글자 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: normal; /* 기본 글자 두께 */
+    transition: color 0.3s ease; /* 색상 변경 시 부드러운 전환 효과 */
+}
+
+#sidebar li a.active {
+    font-weight: bold; /* 섹션이 활성화되면 볼드 처리 */
+    color: #3498db; /* 활성화된 항목 색상 */
+}
+
+.sidebar.active {
+    transform: translateX(0); /* 사이드바 열기 */
+}
+
+/* 네비게이션 링크 스타일 */
+.sidebar .nav-link {
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+/* 모바일에서 토글 버튼 스타일 */
+.navbar-toggler {
+    display: none; /* 데스크탑에서는 숨김 */
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
 }
 
 /* 프로필 섹션 */
@@ -52,25 +92,12 @@ body {
     color: #ccc;
 }
 
-/* 네비게이션 링크 */
-.nav-link {
-    color: #ddd;
-    font-size: 16px;
-    padding: 10px 0;
-    text-decoration: none;
-    display: block;
-}
-
-.nav-link:hover, .nav-link.active {
-    color: white;
-    font-weight: bold;
-}
-
 /* 메인 컨텐츠 */
 #main-content {
     flex-grow: 1;
-    margin-left: 250px; /* 네비게이션 바 공간 확보 */
-    padding: 0; /* 여백 제거 */
+    margin-left: 250px; /* 사이드바의 너비만큼 왼쪽 여백을 주어야 함 */
+    padding: 0;
+    transition: margin-left 0.3s ease; /* 사이드바 토글 시 애니메이션 */
 }
 
 /* 각 섹션 */
@@ -86,6 +113,7 @@ section {
     justify-content: flex-start; /* 제목을 왼쪽 정렬 */
     background-color: #f8f9fa; /* 기본 배경색 */
     box-sizing: border-box; /* 패딩과 테두리를 포함하여 크기 계산 */
+    position: relative; /* 제목을 섹션의 상단 중앙에 배치하기 위해 섹션에 상대 위치 설정 */
 }
 
 /* 제목 */
@@ -752,105 +780,23 @@ section {
     text-decoration: none;
 }
 
-/* 모바일 전용 */
-.navbar-toggler {
-    display: none;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    background-color: transparent;
-    border: none;
-    color: #343a40;
-    font-size: 30px;
-    padding: 15px;   /* 패딩 키움 */
-    z-index: 1100;
-}
-
-/* Overlay 영역 */
-#overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-/* 네비게이션 바 활성 상태에서 overlay 표시 */
-#overlay.active {
-    display: block;
-}
-
-/* 네비게이션 바 열릴 때 토글 숨기기 */
-#sidebar.active + .navbar-toggler {
-    display: none;
-}
-
-/* 반응형 미디어 쿼리 */
+/* 반응형 스타일 */
+/* 768px 이하 */
 @media (max-width: 768px) {
     #sidebar {
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
+        transform: translateX(-100%); /* 모바일에서 사이드바 숨기기 */
     }
 
-    #sidebar.open {
-        transform: translateX(0);
+    #sidebar.active {
+        transform: translateX(0); /* 모바일에서 사이드바 열기 */
     }
 
     #main-content {
-        margin-left: 0;
+        margin-left: 0; /* 사이드바가 없으므로 여백 제거 */
     }
 
-    .profile-pic {
-        width: 80px;
-        height: 80px;
-    }
-
-    .name {
-        font-size: 18px;
-    }
-
-    .nav-link {
-        font-size: 14px;
-    }
-
-    .section-title {
-        font-size: 1.2rem;
-    }
-
-    #home-container {
-        padding-left: 10%;
-    }
-
-    .education-item {
-        width: 90%;  /* 모바일에서 너비를 90%로 확장 */
-    }
-
-    .education-details {
-        display: block; /* 모바일에서 내용을 보이도록 설정 */
-        height: auto;   /* 내용에 맞게 자동 높이 조정 */
-        opacity: 1;     /* 투명도를 1로 설정하여 표시 */
-    }
-
-    #contact-container {
-        flex-direction: column; /* 세로로 정렬 */
-        align-items: center; /* 중앙 정렬 */
-        padding-left: 0; /* 왼쪽 여백 제거 */
-        padding-right: 0; /* 오른쪽 여백 제거 */
-    }
-
-    .contact-item {
-        width: 100%; /* 각 항목이 100% 너비로 차지 */
-        margin-bottom: 20px; /* 각 항목 간의 간격 */
-    }
-}
-
-@media (max-width: 576px) {
-
-    #main-content {
-        margin-left: 0;
+    .navbar-toggler {
+        display: block; /* 모바일에서 토글 버튼 보이게 */
     }
 
     .profile-pic {
@@ -862,27 +808,27 @@ section {
         font-size: 16px;
     }
 
-    .nav-link {
-        font-size: 12px;
-    }
-
     .section-title {
         font-size: 1rem;
+        position: absolute; /* 제목을 절대 위치로 설정 */
+        left: 50%; /* 화면의 가로 중앙 */
+        top: 0; /* 섹션 상단에 고정 */
+        transform: translateX(-50%); /* 정확히 중앙에 배치 */
+        width: 100%; /* 너비 100%로 설정하여 텍스트가 가려지지 않게 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        padding: 10px 0; /* 위아래 여백 추가 */
+    }
+
+    .welcome-message {
+        font-size: 1.8rem;
     }
 
     #home-container {
         padding-left: 5%;
     }
-}
-
-/* 그리드 반응형 */
-@media (max-width: 768px) {
-    .welcome-message {
-        font-size: 1.8rem; /* 모바일에서 폰트 크기를 줄여줌 */
-    }
 
     .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* 2열로 정렬 */
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 
@@ -891,21 +837,17 @@ section {
     }
 
     #experience-container {
-        flex-direction: column; /* 세로 정렬 */
+        flex-direction: column;
         align-items: center;
         gap: 25px;
     }
 
     .experience-card {
-        width: 90%; /* 화면의 90% 너비 */
-    }
-
-    .sub-title {
-        font-size: 1.2rem; /* 폰트 크기 조정 */
+        width: 90%;
     }
 
     .experience-content h2 {
-        font-size: 1.3rem; /* 제목 폰트 크기 조정 */
+        font-size: 1.3rem;
     }
 
     .experience-content h3 {
@@ -921,39 +863,9 @@ section {
         max-width: calc(45% - 10px);
     }
 
-    .project-box {
-        width: calc(100% - 10px);
-        height: 250px;
-    }
-
+    .project-box,
     .blog-box {
         width: calc(100% - 10px);
         height: 250px;
-    }
-}
-
-@media (max-width: 576px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* 1열로 정렬 */
-        gap: 10px;
-    }
-
-    .grid-item {
-        padding: 10px;
-    }
-
-    .skill-category {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-
-    .project-box {
-        width: 100%;
-        height: 200px;
-    }
-
-    .blog-box {
-        width: 100%;
-        height: 200px;
     }
 }

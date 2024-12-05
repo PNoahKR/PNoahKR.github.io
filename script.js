@@ -1,61 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-    const toggler = document.querySelector(".navbar-toggler");
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
+    const toggleBtn = document.getElementById("toggleBtn");
+    const mainContent = document.getElementById("main-content");
+    const links = document.querySelectorAll("#sidebar a"); // 사이드바 링크들
+    const sections = document.querySelectorAll("section"); // 섹션들
 
-    // 토글 버튼 클릭 시 네비게이션 바 열기/닫기
-    toggler.addEventListener("click", function () {
+    // 토글 버튼 클릭 시 사이드바 열기/닫기
+    toggleBtn.addEventListener("click", function () {
         sidebar.classList.toggle("active");
-        overlay.classList.toggle("active");
+    });
 
-        // 네비게이션 바 열릴 때 토글 버튼 숨기기
-        if (sidebar.classList.contains("active")) {
-            toggler.style.display = "none";
+    // 모바일에서 메인 컨텐츠 클릭 시 사이드바 닫기
+    mainContent.addEventListener("click", function () {
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove("active");
         }
     });
 
-    // Overlay 클릭 시 네비게이션 바 닫기
-    overlay.addEventListener("click", function () {
-        sidebar.classList.remove("active");
-        overlay.classList.remove("active");
-
-        // 네비게이션 바 닫힐 때 토글 버튼 다시 표시
-        toggler.style.display = "block";
-    });
-
-    // 스크롤 이벤트 처리 함수
-    function handleScroll() {
-        let currentSection = "";
-
+    // 스크롤 시 섹션에 맞는 링크에 active 클래스 추가
+    window.addEventListener("scroll", function () {
+        let current = "";
         sections.forEach((section) => {
-            // 각 섹션의 위치를 확인
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-
-            // 섹션의 상단이 현재 화면의 상단보다 크고, 섹션 하단이 화면의 상단보다 작은지 체크
-            if (pageYOffset >= sectionTop - sectionHeight / 3 && pageYOffset < sectionTop + sectionHeight - sectionHeight / 3) {
-                currentSection = section.getAttribute("id");
+            if (pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute("id");
             }
         });
 
-        // 모든 링크에서 'active' 클래스 제거
-        navLinks.forEach((link) => {
+        links.forEach((link) => {
             link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
         });
-
-        // 현재 섹션에 해당하는 네비게이션 링크에 'active' 클래스 추가
-        const activeLink = document.querySelector(`.nav-link[href="#${currentSection}"]`);
-        if (activeLink) {
-            activeLink.classList.add("active");
-        }
-    }
-    // 스크롤 이벤트 리스너 추가
-    window.addEventListener('scroll', handleScroll);
-
-    // 페이지 로드 시 바로 한 번 처리하여 초기 상태 설정
-    handleScroll();
+    });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
