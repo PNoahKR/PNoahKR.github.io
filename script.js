@@ -8,12 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // 토글 버튼 클릭 시 사이드바 열기/닫기
     toggleBtn.addEventListener("click", function () {
         sidebar.classList.toggle("active");
-        // 사이드바가 열리면 토글 버튼의 색상 변경
-        if (sidebar.classList.contains("active")) {
-            toggleBtn.style.color = 'white'; // 색상 변경
-        } else {
-            toggleBtn.style.color = 'black'; // 색상 원래대로
-        }
     });
 
     // 모바일에서 메인 컨텐츠 클릭 시 사이드바 닫기
@@ -40,18 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 link.classList.add("active");
             }
         });
-
-        // 스크롤 시 토글 버튼 숨기기/보이기
-        let lastScrollTop = 0;
-        const toggleButton = document.getElementById("toggleBtn");
-        let scrollTop = window.scrollY;
-
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            toggleButton.classList.add("hidden"); // 아래로 스크롤하면 숨기기
-        } else {
-            toggleButton.classList.remove("hidden"); // 위로 스크롤하면 보이기
-        }
-        lastScrollTop = scrollTop;
     });
 });
 
