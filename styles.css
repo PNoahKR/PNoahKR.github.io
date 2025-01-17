@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
 /* 기본 스타일 */
 body {
     margin: 0;
@@ -198,7 +205,7 @@ section {
 
 /* About Me 본문 스타일 */
 #aboutMe .aboutMe-content {
-    font-family: 'Gowun Dodum', serif;
+    font-family: 'Pretendard-Regular', 'Noto Sans KR', sans-serif;
     font-size: 1rem;
     color: #333;
     margin-top: 0; /* 소제목과 본문 간격을 margin-bottom을 통해 조정 */
@@ -260,7 +267,7 @@ section {
 }
 
 .skills-description {
-    font-family: 'Gowun Dodum', sans-serif;
+    font-family: 'Pretendard-Regular', 'Noto Sans KR', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     color: #000000;
@@ -469,7 +476,7 @@ section {
 
 /* 경험 콘텐츠에 적용 */
 .experience-content {
-    font-family: 'Gowun Dodum', serif; /* 사용할 폰트 */
+    font-family: 'Pretendard-Regular', 'Noto Sans KR', sans-serif; /* 사용할 폰트 */
 }
 
 .experience-content h2 {
