@@ -797,6 +797,387 @@ section {
     text-decoration: none;
 }
 
+#projectIntro-container {
+    display: flex;
+    justify-content: space-between; /* 좌우로 간격 배치 */
+    align-items: center; /* 세로로 중앙 정렬 */
+    width: 100%; /* 부모 컨테이너의 너비 100% */
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+.projectIntro-image {
+    flex: 1; /* 컨테이너의 50% 차지 */
+    max-width: 50%; /* 최대 너비 50% 제한 */
+    text-align: center; /* 이미지 중앙 정렬 */
+}
+
+.projectIntro-image img {
+    max-width: 100%; /* 이미지 크기 조정 */
+    height: auto; /* 비율 유지 */
+    border-radius: 15px; /* 테두리 둥글게 설정 */
+    border: 2px solid #ccc; /* 선택적 테두리 색과 두께 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 선택적 그림자 추가 */
+}
+
+.projectIntro-details {
+    flex: 1; /* 컨테이너의 50% 차지 */
+    max-width: 50%; /* 최대 너비 50% 제한 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 중앙 정렬 */
+    padding-left: 20px; /* 이미지와 간격 */
+}
+
+.projectIntro-details ul {
+    list-style-type: none; /* 불릿 제거 */
+    padding: 0; /* 패딩 제거 */
+    margin: 0; /* 마진 제거 */
+}
+
+.projectIntro-details li {
+    margin-bottom: 10px; /* 항목 간 간격 추가 */
+}
+
+.projectIntro-details strong {
+    font-weight: bold; /* 굵은 글씨 */
+}
+
+/* 공통 스타일 */
+#skills-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 30px 5%;
+    box-sizing: border-box;
+    gap: 20px; /* 로고와 상세 정보 사이 간격 */
+    flex-wrap: wrap; /* 작은 화면에서 줄바꿈 허용 */
+}
+
+/* 기술 로고 섹션 */
+.skills-logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 로고 간격 균등 배치 */
+    align-items: center; /* 상하 중간 정렬 */
+    gap: 20px; /* 로고 간 간격 */
+    max-width: 45%; /* 로고 영역 너비 제한 */
+    height: 100%; /* 로고 섹션 높이를 부모 컨테이너에 맞춤 */
+}
+
+/* 로고 스타일 */
+.bubble {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* 동그라미 */
+    background-color: #e0e0e0; /* 로고 배경색 */
+    display: flex;
+    justify-content: center; /* 로고 내용 가로 중앙 정렬 */
+    align-items: center; /* 로고 내용 세로 중앙 정렬 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    overflow: hidden; /* 이미지가 동그라미 안에 맞게 잘리도록 설정 */
+    transition: transform 0.3s ease; /* 호버 애니메이션 추가 */
+}
+
+.bubble:hover {
+    transform: scale(1.1); /* 호버 시 확대 효과 */
+}
+
+/* 로고 이미지 */
+.bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지하면서 잘라서 꽉 채우기 */
+}
+
+/* 상세 정보 스타일 */
+.skills-details {
+    flex: 1;
+    max-width: 50%; /* 상세 정보 섹션 너비 제한 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.skills-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.8; /* 줄 간격 설정 */
+}
+
+.skills-details ul ul {
+    list-style-type: disc; /* 중첩 목록에 불릿 추가 */
+    margin-left: 20px; /* 중첩 목록 들여쓰기 */
+}
+
+.skills-details li {
+    margin-bottom: 10px;
+}
+
+.skills-details strong {
+    font-weight: bold;
+    color: #333; /* 강조 색상 */
+}
+
+/* 화면 설계 이미지와 설명을 담는 컨테이너 */
+.screen-container {
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 화면을 중앙 정렬 */
+    justify-content: flex-start; /* 세로로 정렬 */
+    width: 100%;
+    gap: 40px; /* 이미지와 설명 사이 간격 */
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+/* 각 화면 이미지와 설명 */
+.screen-box {
+    width: 100%; /* 화면 너비에 맞게 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    box-sizing: border-box;
+}
+
+.screen-box img {
+    width: 80%; /* 이미지 너비 100% */
+    height: auto; /* 비율을 유지하면서 높이 자동 조정 */
+    max-height: 600px;
+    object-fit: contain; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    background-color: #000000;
+}
+
+.screen-description {
+    width: 80%;
+    padding: 20px;
+    /*background-color: #fff;*/
+    /*border: 1px solid #ddd;*/
+    border-radius: 8px;
+    text-align: center; /* 설명 중앙 정렬 */
+    margin-top: 10px; /* 이미지와 설명 간 간격 */
+}
+
+.screen-description h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.screen-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* DB 이미지가 포함된 컨테이너 */
+.db-container {
+    display: flex; /* 자식 요소들을 flex로 배치 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 100%;
+    gap: 40px; /* 이미지와 설명 사이 간격 */
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+.db-image {
+    width: 100%; /* 화면 너비에 맞게 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    box-sizing: border-box;
+}
+
+/* 이미지 */
+.db-image img {
+    width: 80%; /* 이미지 너비 100% */
+    height: auto; /* 비율을 유지하면서 높이 자동 조정 */
+    object-fit: cover; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+}
+
+/* 화면 설계 이미지와 설명을 담는 컨테이너 */
+.function-container {
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 화면을 중앙 정렬 */
+    justify-content: flex-start; /* 세로로 정렬 */
+    width: 100%;
+    gap: 40px; /* 이미지와 설명 사이 간격 */
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+/* 각 화면 이미지와 설명 */
+.function-box {
+    width: 100%; /* 화면 너비에 맞게 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    box-sizing: border-box;
+}
+
+.function-box img {
+    width: 80%; /* 이미지 너비 100% */
+    height: auto; /* 비율을 유지하면서 높이 자동 조정 */
+    max-height: 600px;
+    object-fit: contain; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    background-color: #191919;
+}
+
+.function-description {
+    width: 80%;
+    padding: 5px;
+    /*background-color: #fff;*/
+    /*border: 1px solid #ddd;*/
+    border-radius: 8px;
+    text-align: center; /* 설명 중앙 정렬 */
+    margin-top: 10px; /* 이미지와 설명 간 간격 */
+}
+
+.function-description h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.function-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 화면 설계 이미지와 설명을 담는 컨테이너 */
+.introduce-container {
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 화면을 중앙 정렬 */
+    justify-content: flex-start; /* 세로로 정렬 */
+    width: 100%;
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+/* 각 화면 이미지와 설명 */
+.introduce-box {
+    width: 100%; /* 화면 너비에 맞게 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.introduce-box img {
+    width: auto; /* 이미지 너비 100% */
+    height: auto; /* 비율을 유지하면서 높이 자동 조정 */
+    max-height: 600px;
+    max-width: 80%;
+    object-fit: cover; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    margin-top: 5px;
+}
+
+.introduce-description {
+    width: 80%;
+    padding: 20px;
+    text-align: left; /* 설명 중앙 정렬 */
+    margin-top: 5px; /* 이미지와 설명 간 간격 */
+}
+
+.introduce-description h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.introduce-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 트러블슈팅 섹션 컨테이너 */
+.troubleshooting-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* 세로로 나열 */
+    gap: 20px; /* 각 이슈 간 간격 */
+    padding: 20px 5%; /* 좌우 여백과 패딩 추가 */
+    box-sizing: border-box;
+}
+
+/* 개별 이슈 */
+.issue {
+    background-color: #ffffff; /* 이슈 카드 배경 */
+    padding: 20px;
+    border-radius: 8px; /* 둥근 테두리 */
+    border: 1px solid #ddd; /* 얇은 테두리 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 카드 그림자 */
+    display: flex;
+    flex-direction: column; /* 내용을 세로로 배치 */
+    gap: 10px; /* 각 내용 간의 간격 */
+}
+
+/* 이슈 제목 */
+.issue-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0; /* 기본 여백 제거 */
+}
+
+/* 이슈 상세 내용 */
+.issue-details {
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0; /* 리스트 패딩 제거 */
+    margin: 0; /* 기본 마진 제거 */
+    display: flex;
+    flex-direction: column; /* 세로 배치 */
+    gap: 8px; /* 항목 간 간격 */
+}
+
+.issue-details li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.issue-details li strong {
+    color: #222; /* 강조 텍스트 색상 */
+    font-weight: 600; /* 강조 텍스트 굵기 */
+}
+
+/* 마무리 소감 컨테이너 */
+.end-container {
+    width: 100%;
+    padding: 50px 5%; /* 여백 설정 */
+    display: flex;
+    justify-content: center; /* 텍스트 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+}
+
+/* 마무리 소감 텍스트 */
+.end-text {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 1.1rem; /* 기본 텍스트 크기 */
+    line-height: 1.6; /* 줄 간격 */
+    color: #333; /* 텍스트 색상 */
+    text-align: left; /* 텍스트 중앙 정렬 */
+    margin: 0; /* 기본 마진 제거 */
+}
+
 /* 반응형 스타일 */
 /* 768px 이하 */
 @media (max-width: 768px) {
@@ -906,5 +1287,20 @@ section {
     .contact-item {
         width: 100%; /* 모바일에서는 각 항목이 100% 차지 */
         margin-bottom: 20px; /* 항목 간 간격 유지 */
+    }
+
+    #skills-container {
+        flex-direction: column; /* 작은 화면에서는 세로 정렬 */
+        gap: 30px; /* 섹션 간 간격 증가 */
+    }
+
+    .skills-logo {
+        max-width: 100%;
+        justify-content: space-around; /* 로고 간격 균등 배치 */
+    }
+
+    .skills-details {
+        max-width: 100%; /* 너비 제한 해제 */
+        padding-left: 0; /* 패딩 제거 */
     }
 }
