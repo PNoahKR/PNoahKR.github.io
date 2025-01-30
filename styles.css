@@ -180,10 +180,10 @@ section {
 /* About Me 컨테이너 */
 #aboutMe-container {
     display: flex;
-    flex-wrap: wrap;  /* 가로로 배치 후 자동 줄바꿈 */
-    justify-content: space-between;  /* 아이템 간격을 일정하게 */
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
     align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    width: 100%;  /* 좌우로 100% 차지 */
+    width: 100%; /* 좌우로 100% 차지 */
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
     padding-top: 50px; /* 상단 여백 추가 */
@@ -217,11 +217,7 @@ section {
 
 .bold-text {
     font-weight: bold; /* 기본 볼드체 */
-    text-shadow:
-            0.1px 0.1px 0px #000, /* 오른쪽 아래 */
-            -0.1px 0.1px 0px #000, /* 왼쪽 아래 */
-            0.1px -0.1px 0px #000, /* 오른쪽 위 */
-            -0.1px -0.1px 0px #000; /* 왼쪽 위 */
+    text-shadow: 0.1px 0.1px 0px #000, /* 오른쪽 아래 */ -0.1px 0.1px 0px #000, /* 왼쪽 아래 */ 0.1px -0.1px 0px #000, /* 오른쪽 위 */ -0.1px -0.1px 0px #000; /* 왼쪽 위 */
     color: black; /* 텍스트 색상 */
 }
 
@@ -254,10 +250,10 @@ section {
 
 #skills-container {
     display: flex;
-    flex-wrap: wrap;  /* 가로로 배치 후 자동 줄바꿈 */
-    justify-content: space-between;  /* 아이템 간격을 일정하게 */
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
     align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    width: 100%;  /* 좌우로 100% 차지 */
+    width: 100%; /* 좌우로 100% 차지 */
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
     padding-top: 50px; /* 상단 여백 추가 */
@@ -310,10 +306,10 @@ section {
 
 #projects-container {
     display: flex;
-    flex-wrap: wrap;  /* 가로로 배치 후 자동 줄바꿈 */
-    justify-content: space-between;  /* 아이템 간격을 일정하게 */
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
     align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    width: 100%;  /* 좌우로 100% 차지 */
+    width: 100%; /* 좌우로 100% 차지 */
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
     padding-top: 50px; /* 상단 여백 추가 */
@@ -507,10 +503,10 @@ section {
 
 #career-container {
     display: flex;
-    flex-wrap: wrap;  /* 가로로 배치 후 자동 줄바꿈 */
-    justify-content: space-between;  /* 아이템 간격을 일정하게 */
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
     align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    width: 100%;  /* 좌우로 100% 차지 */
+    width: 100%; /* 좌우로 100% 차지 */
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
     padding-top: 50px; /* 상단 여백 추가 */
@@ -580,9 +576,9 @@ section {
 #education-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;  /* 아이템 간격을 일정하게 */
+    justify-content: center; /* 아이템 간격을 일정하게 */
     align-items: center; /* 텍스트 왼쪽 정렬 */
-    width: 100%;  /* 좌우로 100% 차지 */
+    width: 100%; /* 좌우로 100% 차지 */
     height: fit-content;
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
@@ -647,10 +643,10 @@ section {
 
 #blog-container {
     display: flex;
-    flex-wrap: wrap;  /* 가로로 배치 후 자동 줄바꿈 */
-    justify-content: space-between;  /* 아이템 간격을 일정하게 */
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
     align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    width: 100%;  /* 좌우로 100% 차지 */
+    width: 100%; /* 좌우로 100% 차지 */
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
     padding-top: 50px; /* 상단 여백 추가 */
@@ -744,10 +740,10 @@ section {
 
 #contact-container {
     display: flex;
-    flex-wrap: wrap;  /* 가로로 배치 후 자동 줄바꿈 */
-    justify-content: space-between;  /* 아이템 간격을 일정하게 */
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
     align-items: flex-start; /* 텍스트 왼쪽 정렬 */
-    width: 100%;  /* 좌우로 100% 차지 */
+    width: 100%; /* 좌우로 100% 차지 */
     padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
     padding-right: 5%;
     padding-top: 50px; /* 상단 여백 추가 */
@@ -1116,47 +1112,57 @@ section {
     gap: 20px; /* 각 이슈 간 간격 */
     padding: 20px 5%; /* 좌우 여백과 패딩 추가 */
     box-sizing: border-box;
+    overflow: hidden; /* 가로 스크롤 방지 */
 }
 
-/* 개별 이슈 */
+/* 각 이슈 섹션 */
 .issue {
-    background-color: #ffffff; /* 이슈 카드 배경 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 20px;
-    border-radius: 8px; /* 둥근 테두리 */
-    border: 1px solid #ddd; /* 얇은 테두리 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 카드 그림자 */
-    display: flex;
-    flex-direction: column; /* 내용을 세로로 배치 */
-    gap: 10px; /* 각 내용 간의 간격 */
+    background: #fff;
+    overflow-y: auto; /* 높이 초과 시 세로 스크롤 활성화 */
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+    box-sizing: border-box;
+    word-wrap: break-word; /* 긴 단어 줄바꿈 */
 }
 
-/* 이슈 제목 */
 .issue-title {
-    font-size: 1.25rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
     color: #333;
-    margin: 0; /* 기본 여백 제거 */
 }
 
-/* 이슈 상세 내용 */
-.issue-details {
-    list-style: none; /* 기본 리스트 스타일 제거 */
-    padding: 0; /* 리스트 패딩 제거 */
-    margin: 0; /* 기본 마진 제거 */
-    display: flex;
-    flex-direction: column; /* 세로 배치 */
-    gap: 8px; /* 항목 간 간격 */
+/* 세부 섹션 */
+.issue-section {
+    margin-bottom: 20px;
 }
 
-.issue-details li {
-    font-size: 1rem;
-    line-height: 1.6;
+.issue-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
     color: #555;
 }
 
-.issue-details li strong {
-    color: #222; /* 강조 텍스트 색상 */
-    font-weight: 600; /* 강조 텍스트 굵기 */
+/* 점 리스트 */
+.issue-section ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+/* 코드 박스 */
+.code-box {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto; /* 가로 스크롤 활성화 */
+    overflow-y: auto; /* 세로 스크롤 활성화 */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    max-height: 300px; /* 코드 박스의 최대 높이 */
+    white-space: pre-wrap; /* 줄 바꿈 및 긴 단어 처리 */
+    word-wrap: break-word; /* 긴 단어 강제 줄바꿈 */
 }
 
 /* 마무리 소감 컨테이너 */
@@ -1278,8 +1284,8 @@ section {
     }
 
     #contact-container {
-        flex-direction: column;  /* 모바일에서 세로로 배치 */
-        align-items: center;  /* 세로 배치 시 중앙 정렬 */
+        flex-direction: column; /* 모바일에서 세로로 배치 */
+        align-items: center; /* 세로 배치 시 중앙 정렬 */
         padding-left: 0; /* 모바일에서는 왼쪽 여백 제거 */
         padding-right: 0; /* 모바일에서는 오른쪽 여백 제거 */
     }
