@@ -1127,6 +1127,17 @@ section {
     word-wrap: break-word; /* 긴 단어 줄바꿈 */
 }
 
+/* 트러블슈팅 이미지 스타일 */
+.issue-section img {
+    width: 100%; /* 부모 컨테이너 너비에 맞게 */
+    max-width: 600px; /* 최대 너비 제한 */
+    height: auto; /* 비율 유지 */
+    object-fit: contain; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    margin: 0 auto; /* 이미지 중앙 정렬 */
+}
+
 .issue-title {
     font-size: 1.5rem;
     margin-bottom: 20px;
