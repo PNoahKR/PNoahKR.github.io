@@ -1,0 +1,1323 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 기본 스타일 */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    font-family: 'Noto Sans KR', sans-serif;
+    overflow-x: hidden;
+}
+
+/* 사이드바 스타일 */
+#sidebar {
+    position: fixed; /* 고정된 위치로 설정 */
+    top: 0;
+    left: 0;
+    width: 250px; /* 사이드바 너비 */
+    height: 100vh; /* 화면 높이와 동일 */
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1000; /* 다른 콘텐츠보다 위에 표시 */
+    transform: translateX(0); /* 사이드바가 기본적으로 보이도록 설정 */
+}
+
+/* 사이드바 섹션 스타일 */
+#sidebar ul {
+    list-style-type: none; /* 기본 리스트 점 제거 */
+    padding: 0; /* 여백 제거 */
+}
+
+#sidebar li {
+    margin: 10px 0; /* 섹션 항목 간의 간격 */
+}
+
+#sidebar li a {
+    color: #fff; /* 기본 글자 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: normal; /* 기본 글자 두께 */
+    transition: color 0.3s ease; /* 색상 변경 시 부드러운 전환 효과 */
+}
+
+#sidebar li a.active {
+    font-weight: bold; /* 섹션이 활성화되면 볼드 처리 */
+    color: #3498db; /* 활성화된 항목 색상 */
+}
+
+.sidebar.active {
+    transform: translateX(0); /* 사이드바 열기 */
+}
+
+/* 네비게이션 링크 스타일 */
+.sidebar .nav-link {
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+/* 모바일에서 토글 버튼 스타일 */
+.navbar-toggler {
+    display: none; /* 데스크탑에서는 숨김 */
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+/* 토글 버튼 숨기기 */
+.navbar-toggler.hidden {
+    display: none;
+}
+
+/* 사이드바가 열렸을 때 토글 버튼 색상 변경 */
+#sidebar.active + .navbar-toggler {
+    color: rgba(255, 255, 255, 0.6); /* 사이드바가 열렸을 때 토글 버튼의 글자 색을 흰색으로 설정 */
+}
+
+/* 프로필 섹션 */
+.profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.intro {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* 메인 컨텐츠 */
+#main-content {
+    flex-grow: 1;
+    margin-left: 250px; /* 사이드바의 너비만큼 왼쪽 여백을 주어야 함 */
+    padding: 0;
+    transition: margin-left 0.3s ease; /* 사이드바 토글 시 애니메이션 */
+}
+
+/* 각 섹션 */
+section {
+    height: fit-content; /* 섹션 높이를 화면에 맞춤 */
+    min-height: 500px;
+    margin: 0; /* 여백 제거 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 제목을 상단 정렬 */
+    justify-content: flex-start; /* 제목을 왼쪽 정렬 */
+    background-color: #f8f9fa; /* 기본 배경색 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함하여 크기 계산 */
+    position: relative; /* 제목을 섹션의 상단 중앙에 배치하기 위해 섹션에 상대 위치 설정 */
+}
+
+/* 제목 */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.37);
+    position: static; /* 고정 위치 설정 */
+    top: 0; /* 상단에 고정 */
+    padding: 10px 1%;
+    z-index: 100; /* 다른 내용과 겹치지 않도록 */
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+/* 섹션 배경색 (선택 사항) */
+#home {
+    background-color: #f8f9fa;
+    height: 100vh; /* 섹션 높이를 화면에 맞춤 */
+}
+
+/* 환영 문구 컨테이너 */
+#home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    height: calc(100vh - 100px); /* 제목 제외한 화면 중앙 배치 */
+    padding-left: 5%; /* 왼쪽으로 적절히 이동 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
+    top: -50px; /* 높이를 조정해 제목과 자연스럽게 연결 */
+}
+
+/* 환영 문구 스타일 */
+.welcome-message {
+    opacity: 0;
+    font-family: 'Song Myung', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 10px 0;
+    transition: opacity 1s ease-in;
+}
+
+/* About Me 컨테이너 */
+#aboutMe-container {
+    display: flex;
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
+    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+    width: 100%; /* 좌우로 100% 차지 */
+    padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
+    padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
+}
+
+/* 소제목 스타일 */
+#aboutMe .sub-title {
+    font-family: 'Gowun Dodum', serif;
+    font-size: 1.5rem;
+    margin-top: 20px; /* 제목과 소제목 간격 */
+    color: #333;
+    margin-left: 0; /* 왼쪽 정렬 */
+    margin-bottom: 50px; /* 소제목과 본문 사이에 여백 추가 */
+    font-weight: bold;
+}
+
+/* About Me 본문 스타일 */
+#aboutMe .aboutMe-content {
+    font-family: 'Pretendard-Regular', 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    margin-top: 0; /* 소제목과 본문 간격을 margin-bottom을 통해 조정 */
+    padding-left: 0; /* 본문 왼쪽 여백 제거 */
+    padding-right: 0;
+    margin-left: 0; /* 왼쪽 정렬 */
+    text-align: left; /* 왼쪽 정렬 */
+}
+
+.bold-text {
+    font-weight: bold; /* 기본 볼드체 */
+    text-shadow: 0.1px 0.1px 0px #000, /* 오른쪽 아래 */ -0.1px 0.1px 0px #000, /* 왼쪽 아래 */ 0.1px -0.1px 0px #000, /* 오른쪽 위 */ -0.1px -0.1px 0px #000; /* 왼쪽 위 */
+    color: black; /* 텍스트 색상 */
+}
+
+/* 기본 그리드 설정 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 자동으로 열 배치 */
+    gap: 15px;
+    max-width: 1200px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 10px;
+    width: 100%; /* 화면 너비에 맞추기 */
+    box-sizing: border-box;
+}
+
+/* 그리드 아이템 */
+.grid-item {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 아이콘 스타일 */
+.icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#skills-container {
+    display: flex;
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
+    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+    width: 100%; /* 좌우로 100% 차지 */
+    padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
+    padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
+}
+
+.skills-description {
+    font-family: 'Pretendard-Regular', 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 30px; /* 설명과 카테고리 간격 조정 */
+    text-align: left;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.skill-category {
+    background-color: rgba(255, 255, 255, 0.9); /* 카드 배경 */
+    padding: 20px; /* 내부 여백 */
+    margin: 10px; /* 카드 간격 */
+    border-radius: 8px; /* 둥근 모서리 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    flex: 1 1 calc(30% - 20px); /* 30% 너비, 간격 조정 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+    max-width: calc(30% - 20px); /* 최대 너비 제한 */
+}
+
+.skill-category h2 {
+    margin-bottom: 15px; /* 제목과 리스트 간격 */
+    color: #495057; /* 어두운 회색 */
+    font-size: 1.2rem; /* 제목 크기 */
+    font-weight: bold;
+}
+
+.skill-category ul {
+    list-style-type: none; /* 리스트 스타일 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+    margin: 0;
+}
+
+.skill-category li {
+    margin-bottom: 10px; /* 리스트 간격 */
+    font-size: 1rem; /* 리스트 텍스트 크기 */
+    color: #212529; /* 텍스트 색상 */
+}
+
+#projects-container {
+    display: flex;
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
+    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+    width: 100%; /* 좌우로 100% 차지 */
+    padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
+    padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
+}
+
+.project-box {
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+    position: relative;
+    width: calc(50% - 10px); /* 한 줄에 2개의 박스 */
+    height: 300px; /* 높이를 키움 */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 20px; /* 아래 간격 */
+    box-sizing: border-box; /* padding을 포함한 크기 계산 */
+}
+
+.project-box:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* 마우스 오버 시 배경이 어두워짐 */
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 영역을 채우도록 */
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.73); /* 배경에 블러 처리 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 요소들이 위에서 아래로 정렬되게 설정 */
+    padding: 20px; /* 내용물과 경계 간 간격을 주기 위해 padding 추가 */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-box:hover .project-overlay {
+    opacity: 1; /* 마우스 오버 시 텍스트와 버튼이 보이게 */
+}
+
+.project-title {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left; /* 왼쪽 정렬 */
+    margin-top: 10px; /* 제목 위에 여백 추가 */
+}
+
+.project-description {
+    color: white;
+    font-size: 15px;
+    margin-bottom: 20px;
+    text-align: left; /* 왼쪽 정렬 */
+}
+
+.project-links {
+    display: flex; /* 링크들을 가로로 배치 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    gap: 10px; /* 링크들 간의 간격 */
+}
+
+.project-link {
+    padding: 8px 8px;
+    background-color: rgba(222, 226, 230, 0.73);
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 링크 위에 간격 추가 */
+    align-self: flex-start; /* 왼쪽 아래 정렬 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.project-link:hover {
+    background-color: #3498db;
+}
+
+#experience-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 50px 5%;
+    gap: 20px; /* 카드 간격 */
+    box-sizing: border-box;
+}
+
+#experience .sub-title {
+    font-family: 'Gowun Dodum', serif;
+    font-size: 1.5rem;
+    margin-top: 20px; /* 제목과 소제목 간격 */
+    color: #333;
+    margin-left: 20px; /* 왼쪽 정렬 */
+    margin-bottom: 50px; /* 소제목과 본문 사이에 여백 추가 */
+    font-weight: bold;
+}
+
+.experience-card {
+    background-color: white; /* 카드 배경 */
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 */
+    width: calc(33% - 20px); /* 카드 너비 */
+    padding: 20px;
+    position: relative;
+    display: flex; /* 플렉스 박스를 사용 */
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    align-items: center; /* 가로축 가운데 정렬 */
+    justify-content: center; /* 세로축 가운데 정렬 */
+    transition: transform 0.3s; /* 호버 시 애니메이션 */
+}
+
+.experience-card:hover {
+    transform: translateY(-5px); /* 호버 효과 */
+}
+
+.icon-container {
+    position: absolute;
+    top: -45px; /* 카드 위쪽에 걸치도록 */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 아이콘 그림자 */
+}
+
+.icon-sales {
+    background-color: rgb(52, 152, 219); /* 파란색 */
+}
+
+.icon-project {
+    background-color: rgb(46, 204, 113); /* 녹색 */
+}
+
+.icon-learning {
+    background-color: rgb(241, 196, 15); /* 노란색 */
+}
+
+.icon-container i {
+    font-size: 24px; /* 아이콘 크기 */
+    color: white; /* 아이콘 색상 */
+}
+
+/* 경험 콘텐츠에 적용 */
+.experience-content {
+    font-family: 'Pretendard-Regular', 'Noto Sans KR', sans-serif; /* 사용할 폰트 */
+}
+
+.experience-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #495057;
+    text-align: center;
+}
+
+.experience-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #6c757d;
+    text-align: center;
+}
+
+.experience-content p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+}
+
+.experience-content li {
+    margin-bottom: 10px; /* <li> 항목 간 간격 추가 */
+}
+
+#career-container {
+    display: flex;
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
+    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+    width: 100%; /* 좌우로 100% 차지 */
+    padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
+    padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
+}
+
+.career-item {
+    position: relative;
+    margin: 20px 0;
+    padding-left: 40px; /* 타임라인과 간격 */
+    display: flex;
+    align-items: center;
+}
+
+.timeline {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px; /* 타임라인의 너비 */
+    height: 100%; /* 타임라인의 길이 */
+    background-color: #102383; /* 타임라인 색상 */
+    border-radius: 10px; /* 둥근 모서리 */
+}
+
+.career-content {
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.company-name {
+    font-size: 24px;
+    color: #000000;
+    margin: 0;
+    font-weight: bold;
+}
+
+.company-duration {
+    font-size: 16px;
+    color: #000000;
+    margin-top: 5px;
+}
+
+.job-description {
+    font-size: 16px;
+    color: #000000;
+    margin-top: 10px;
+}
+
+.job-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.job-description ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.job-description li {
+    margin-bottom: 5px;
+}
+
+#education-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 아이템 간격을 일정하게 */
+    align-items: center; /* 텍스트 왼쪽 정렬 */
+    width: 100%; /* 좌우로 100% 차지 */
+    height: fit-content;
+    padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
+    padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
+}
+
+.education-item {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 80%; /* 컨테이너 전체 너비 차지 */
+    margin-bottom: 20px;
+}
+
+.education-logo {
+    width: 30px; /* 로고 이미지 크기 조정 */
+    height: auto;
+    margin-right: 10px; /* 이미지와 텍스트 간 간격 */
+}
+
+.education-title {
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+    width: 100%; /* 버튼 너비를 전체로 설정 */
+    padding: 10px 0;
+    transition: color 0.3s;
+}
+
+.education-title:hover {
+    color: #667aff;
+}
+
+.education-details {
+    display: none;
+    height: 0; /* 초기 높이를 0으로 설정 */
+    overflow: hidden; /* 내용 넘침 방지 */
+    transition: height 0.3s ease, opacity 0.3s ease; /* 높이와 투명도 변화를 부드럽게 처리 */
+    color: #000000;
+    margin-top: 10px;
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: left;
+    gap: 15px;
+    opacity: 0; /* 초기 투명도 설정 */
+}
+
+.education-details p {
+    margin: 0; /* 기본 여백 제거 */
+    flex: 1; /* 각 요소가 동일한 비율로 공간을 차지 */
+}
+
+#blog-container {
+    display: flex;
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
+    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+    width: 100%; /* 좌우로 100% 차지 */
+    padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
+    padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
+}
+
+.blog-box {
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+    position: relative;
+    width: calc(50% - 10px); /* 한 줄에 2개의 박스 */
+    height: 300px; /* 높이를 키움 */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    border-radius: 0px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 20px; /* 아래 간격 */
+    box-sizing: border-box; /* padding을 포함한 크기 계산 */
+}
+
+.blog-box:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* 마우스 오버 시 배경이 어두워짐 */
+}
+
+.blog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 영역을 채우도록 */
+}
+
+.blog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.73); /* 배경에 블러 처리 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 요소들이 위에서 아래로 정렬되게 설정 */
+    padding: 20px; /* 내용물과 경계 간 간격을 주기 위해 padding 추가 */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.blog-box:hover .blog-overlay {
+    opacity: 1; /* 마우스 오버 시 텍스트와 버튼이 보이게 */
+}
+
+.blog-title {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left; /* 왼쪽 정렬 */
+    margin-top: 10px; /* 제목 위에 여백 추가 */
+}
+
+.blog-description {
+    color: white;
+    font-size: 15px;
+    margin-bottom: 20px;
+    text-align: left; /* 왼쪽 정렬 */
+}
+
+.blog-links {
+    display: flex; /* 링크들을 가로로 배치 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    gap: 10px; /* 링크들 간의 간격 */
+}
+
+.blog-link {
+    padding: 8px 8px;
+    background-color: rgba(222, 226, 230, 0.73);
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 링크 위에 간격 추가 */
+    align-self: flex-start; /* 왼쪽 아래 정렬 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.blog-link:hover {
+    background-color: #3498db;
+}
+
+#contact-container {
+    display: flex;
+    flex-wrap: wrap; /* 가로로 배치 후 자동 줄바꿈 */
+    justify-content: space-between; /* 아이템 간격을 일정하게 */
+    align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+    width: 100%; /* 좌우로 100% 차지 */
+    padding-left: 5%; /* 왼쪽 여백을 5%로 줄여서 붙게 설정 */
+    padding-right: 5%;
+    padding-top: 50px; /* 상단 여백 추가 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    position: relative; /* 부모 요소에 영향을 받지 않도록 설정 */
+    box-sizing: border-box; /* 여백을 포함한 크기 계산 */
+}
+
+.contact-item {
+    width: 30%; /* 각 항목의 너비를 화면의 30%로 설정 */
+    margin-bottom: 20px;
+}
+
+.contact-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* 텍스트가 상자를 벗어나지 않도록 함 */
+}
+
+.contact-card:hover {
+    transform: scale(1.05); /* 마우스 오버 시 크기 확대 */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.contact-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+#projectIntro-container {
+    display: flex;
+    justify-content: space-between; /* 좌우로 간격 배치 */
+    align-items: center; /* 세로로 중앙 정렬 */
+    width: 100%; /* 부모 컨테이너의 너비 100% */
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+.projectIntro-image {
+    flex: 1; /* 컨테이너의 50% 차지 */
+    max-width: 50%; /* 최대 너비 50% 제한 */
+    text-align: center; /* 이미지 중앙 정렬 */
+}
+
+.projectIntro-image img {
+    max-width: 100%; /* 이미지 크기 조정 */
+    height: auto; /* 비율 유지 */
+    border-radius: 15px; /* 테두리 둥글게 설정 */
+    border: 2px solid #ccc; /* 선택적 테두리 색과 두께 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 선택적 그림자 추가 */
+}
+
+.projectIntro-details {
+    flex: 1; /* 컨테이너의 50% 차지 */
+    max-width: 50%; /* 최대 너비 50% 제한 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 중앙 정렬 */
+    padding-left: 20px; /* 이미지와 간격 */
+}
+
+.projectIntro-details ul {
+    list-style-type: none; /* 불릿 제거 */
+    padding: 0; /* 패딩 제거 */
+    margin: 0; /* 마진 제거 */
+}
+
+.projectIntro-details li {
+    margin-bottom: 10px; /* 항목 간 간격 추가 */
+}
+
+.projectIntro-details strong {
+    font-weight: bold; /* 굵은 글씨 */
+}
+
+/* 공통 스타일 */
+#skills-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 30px 5%;
+    box-sizing: border-box;
+    gap: 20px; /* 로고와 상세 정보 사이 간격 */
+    flex-wrap: wrap; /* 작은 화면에서 줄바꿈 허용 */
+}
+
+/* 기술 로고 섹션 */
+.skills-logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 로고 간격 균등 배치 */
+    align-items: center; /* 상하 중간 정렬 */
+    gap: 20px; /* 로고 간 간격 */
+    max-width: 45%; /* 로고 영역 너비 제한 */
+    height: 100%; /* 로고 섹션 높이를 부모 컨테이너에 맞춤 */
+}
+
+/* 로고 스타일 */
+.bubble {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* 동그라미 */
+    background-color: #e0e0e0; /* 로고 배경색 */
+    display: flex;
+    justify-content: center; /* 로고 내용 가로 중앙 정렬 */
+    align-items: center; /* 로고 내용 세로 중앙 정렬 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    overflow: hidden; /* 이미지가 동그라미 안에 맞게 잘리도록 설정 */
+    transition: transform 0.3s ease; /* 호버 애니메이션 추가 */
+}
+
+.bubble:hover {
+    transform: scale(1.1); /* 호버 시 확대 효과 */
+}
+
+/* 로고 이미지 */
+.bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지하면서 잘라서 꽉 채우기 */
+}
+
+/* 상세 정보 스타일 */
+.skills-details {
+    flex: 1;
+    max-width: 50%; /* 상세 정보 섹션 너비 제한 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.skills-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.8; /* 줄 간격 설정 */
+}
+
+.skills-details ul ul {
+    list-style-type: disc; /* 중첩 목록에 불릿 추가 */
+    margin-left: 20px; /* 중첩 목록 들여쓰기 */
+}
+
+.skills-details li {
+    margin-bottom: 10px;
+}
+
+.skills-details strong {
+    font-weight: bold;
+    color: #333; /* 강조 색상 */
+}
+
+/* 화면 설계 이미지와 설명을 담는 컨테이너 */
+.screen-container {
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 화면을 중앙 정렬 */
+    justify-content: flex-start; /* 세로로 정렬 */
+    width: 100%;
+    gap: 40px; /* 이미지와 설명 사이 간격 */
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+/* 각 화면 이미지와 설명 */
+.screen-box {
+    width: 100%; /* 화면 너비에 맞게 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    box-sizing: border-box;
+}
+
+.screen-box img {
+    width: 80%; /* 이미지 너비 100% */
+    height: auto; /* 비율을 유지하면서 높이 자동 조정 */
+    max-height: 600px;
+    object-fit: contain; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    background-color: #000000;
+}
+
+.screen-description {
+    width: 80%;
+    padding: 20px;
+    /*background-color: #fff;*/
+    /*border: 1px solid #ddd;*/
+    border-radius: 8px;
+    text-align: center; /* 설명 중앙 정렬 */
+    margin-top: 10px; /* 이미지와 설명 간 간격 */
+}
+
+.screen-description h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.screen-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* DB 이미지가 포함된 컨테이너 */
+.db-container {
+    display: flex; /* 자식 요소들을 flex로 배치 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 100%;
+    gap: 40px; /* 이미지와 설명 사이 간격 */
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+.db-image {
+    width: 100%; /* 화면 너비에 맞게 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    box-sizing: border-box;
+}
+
+/* 이미지 */
+.db-image img {
+    width: 80%; /* 이미지 너비 100% */
+    height: auto; /* 비율을 유지하면서 높이 자동 조정 */
+    object-fit: cover; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+}
+
+/* 화면 설계 이미지와 설명을 담는 컨테이너 */
+.function-container {
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 화면을 중앙 정렬 */
+    justify-content: flex-start; /* 세로로 정렬 */
+    width: 100%;
+    gap: 40px; /* 이미지와 설명 사이 간격 */
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+/* 각 화면 이미지와 설명 */
+.function-box {
+    width: 100%; /* 화면 너비에 맞게 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    box-sizing: border-box;
+}
+
+.function-box img {
+    width: 80%; /* 이미지 너비 100% */
+    height: auto; /* 비율을 유지하면서 높이 자동 조정 */
+    max-height: 600px;
+    object-fit: contain; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    background-color: #191919;
+}
+
+.function-description {
+    width: 80%;
+    padding: 5px;
+    /*background-color: #fff;*/
+    /*border: 1px solid #ddd;*/
+    border-radius: 8px;
+    text-align: center; /* 설명 중앙 정렬 */
+    margin-top: 10px; /* 이미지와 설명 간 간격 */
+}
+
+.function-description h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.function-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 화면 설계 이미지와 설명을 담는 컨테이너 */
+.introduce-container {
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 화면을 중앙 정렬 */
+    justify-content: flex-start; /* 세로로 정렬 */
+    width: 100%;
+    padding: 50px 5%; /* 상단 50px, 좌우 5% 여백 */
+    box-sizing: border-box; /* 여백 포함 크기 계산 */
+}
+
+/* 각 화면 이미지와 설명 */
+.introduce-box {
+    width: 100%; /* 화면 너비에 맞게 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.introduce-box img {
+    width: auto; /* 이미지 너비 100% */
+    height: auto; /* 비율을 유지하면서 높이 자동 조정 */
+    max-height: 600px;
+    max-width: 80%;
+    object-fit: cover; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    margin-top: 5px;
+}
+
+.introduce-description {
+    width: 80%;
+    padding: 20px;
+    text-align: left; /* 설명 중앙 정렬 */
+    margin-top: 5px; /* 이미지와 설명 간 간격 */
+}
+
+.introduce-description h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.introduce-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 트러블슈팅 섹션 컨테이너 */
+.troubleshooting-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* 세로로 나열 */
+    gap: 20px; /* 각 이슈 간 간격 */
+    padding: 20px 5%; /* 좌우 여백과 패딩 추가 */
+    box-sizing: border-box;
+    overflow: hidden; /* 가로 스크롤 방지 */
+}
+
+/* 각 이슈 섹션 */
+.issue {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background: #fff;
+    overflow-y: auto; /* 높이 초과 시 세로 스크롤 활성화 */
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+    box-sizing: border-box;
+    word-wrap: break-word; /* 긴 단어 줄바꿈 */
+}
+
+/* 트러블슈팅 이미지 스타일 */
+.issue-section img {
+    width: 100%; /* 부모 컨테이너 너비에 맞게 */
+    max-width: 600px; /* 최대 너비 제한 */
+    height: auto; /* 비율 유지 */
+    object-fit: contain; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 입체감 추가 */
+    margin: 0 auto; /* 이미지 중앙 정렬 */
+}
+
+.issue-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* 세부 섹션 */
+.issue-section {
+    margin-bottom: 20px;
+}
+
+.issue-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* 점 리스트 */
+.issue-section ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+/* 코드 박스 */
+.code-box {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto; /* 가로 스크롤 활성화 */
+    overflow-y: auto; /* 세로 스크롤 활성화 */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    max-height: 300px; /* 코드 박스의 최대 높이 */
+    white-space: pre-wrap; /* 줄 바꿈 및 긴 단어 처리 */
+    word-wrap: break-word; /* 긴 단어 강제 줄바꿈 */
+}
+
+/* 마무리 소감 컨테이너 */
+.end-container {
+    width: 100%;
+    padding: 50px 5%; /* 여백 설정 */
+    display: flex;
+    justify-content: center; /* 텍스트 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+}
+
+/* 마무리 소감 텍스트 */
+.end-text {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 1.1rem; /* 기본 텍스트 크기 */
+    line-height: 1.6; /* 줄 간격 */
+    color: #333; /* 텍스트 색상 */
+    text-align: left; /* 텍스트 중앙 정렬 */
+    margin: 0; /* 기본 마진 제거 */
+}
+
+/* 반응형 스타일 */
+/* 768px 이하 */
+@media (max-width: 768px) {
+    #sidebar {
+        transform: translateX(-100%); /* 모바일에서 사이드바 숨기기 */
+    }
+
+    #sidebar.active {
+        transform: translateX(0); /* 모바일에서 사이드바 열기 */
+    }
+
+    #main-content {
+        margin-left: 0; /* 사이드바가 없으므로 여백 제거 */
+    }
+
+    .navbar-toggler {
+        display: block; /* 모바일에서 토글 버튼 보이게 */
+    }
+
+    .profile-pic {
+        width: 60px;
+        height: 60px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 1rem;
+        position: absolute; /* 제목을 절대 위치로 설정 */
+        left: 50%; /* 화면의 가로 중앙 */
+        top: 0; /* 섹션 상단에 고정 */
+        transform: translateX(-50%); /* 정확히 중앙에 배치 */
+        width: 100%; /* 너비 100%로 설정하여 텍스트가 가려지지 않게 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        padding: 10px 0; /* 위아래 여백 추가 */
+    }
+
+    .welcome-message {
+        font-size: 1.8rem;
+    }
+
+    #home-container {
+        padding-left: 5%;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .grid-item {
+        padding: 15px;
+    }
+
+    #experience-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .experience-card {
+        width: 90%;
+    }
+
+    .experience-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .experience-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .experience-content p {
+        font-size: 0.9rem;
+    }
+
+    .skill-category {
+        flex: 1 1 calc(45% - 10px);
+        max-width: calc(45% - 10px);
+    }
+
+    .project-box,
+    .blog-box {
+        width: calc(100% - 10px);
+        height: 250px;
+    }
+
+    .education-item {
+        width: 100%;
+    }
+
+    .education-details {
+        display: flex; /* flexbox 사용 */
+        flex-direction: column; /* 자식 요소들을 세로로 배치 */
+        align-items: flex-start; /* 자식 요소들을 왼쪽 정렬 */
+    }
+
+    #contact-container {
+        flex-direction: column; /* 모바일에서 세로로 배치 */
+        align-items: center; /* 세로 배치 시 중앙 정렬 */
+        padding-left: 0; /* 모바일에서는 왼쪽 여백 제거 */
+        padding-right: 0; /* 모바일에서는 오른쪽 여백 제거 */
+    }
+
+    .contact-item {
+        width: 100%; /* 모바일에서는 각 항목이 100% 차지 */
+        margin-bottom: 20px; /* 항목 간 간격 유지 */
+    }
+
+    #skills-container {
+        flex-direction: column; /* 작은 화면에서는 세로 정렬 */
+        gap: 30px; /* 섹션 간 간격 증가 */
+    }
+
+    .skills-logo {
+        max-width: 100%;
+        justify-content: space-around; /* 로고 간격 균등 배치 */
+    }
+
+    .skills-details {
+        max-width: 100%; /* 너비 제한 해제 */
+        padding-left: 0; /* 패딩 제거 */
+    }
+}
